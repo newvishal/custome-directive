@@ -1,0 +1,9 @@
+<div class="alert bg-blue" *Hideafter="5000 as time;then placeholder;let counter=counter">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. {{time}} dis-appear in {{counter}}</p>
+</div>
+<ng-template #placeholder let-Hideafter="Hideafter" let-myDefault>
+    <div class="alert bg-gray">
+        <p>I am placeholder {{Hideafter}} default {{myDefault}}</p>
+    </div>
+</ng-template>
+<router-outlet></router-outlet>
