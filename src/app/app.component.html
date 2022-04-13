@@ -7,3 +7,32 @@
     </div>
 </ng-template>
 <router-outlet></router-outlet>
+
+<div>
+    <h1>Add User</h1>
+    <form #f="ngForm" novalidate (ngSubmit)="save(f.value, f.valid || false)">
+        <label for="username">Username</label>
+        <input type="text" name="username" [ngModel]="user.username" required minlength="5" maxlength="8" #username="ngModel">
+        <small [hidden]="username.valid || (username.pristine && !f.submitted)">
+            username is required
+        </small>
+        <div>
+            <label for="password">password</label>
+            <input type="text" [requireDigit]="passwordComplexitySetting.requireDigit" [requireLowercase]="passwordComplexitySetting.requireLowercase"
+            [requireUppercase]="passwordComplexitySetting.requireUppercase" [requireNonAlphanumeric]="passwordComplexitySetting.requireNonAlphanumeric" [requiredLength]="passwordComplexitySetting.requiredLength" name="password" [ngModel]="user.password" #password="ngModel" validateEqual="confirmPassword" reverse="true" required>
+            <small [hidden]="password.valid || (password.pristine && !f.submitted)">
+                password is required
+            </small>
+            <pre *ngIf="password.errors">{{ password.errors | json }}</pre>
+        </div>
+        <div>
+            <label for="retype">Retype</label>
+            <!-- validateEqual is our custom validator. It should validate the current input value against the password input value. -->
+            <input type="text" name="confirmPassword" [ngModel]="user.confirmPassword" #confirmPassword="ngModel" validateEqual="password" required>
+            <small [hidden]="confirmPassword.valid || (confirmPassword.pristine && !f.submitted)">
+                Password mismatch
+            </small>
+        </div>
+        <button [disabled]="!f.valid">submit</button>
+    </form>
+</div>
