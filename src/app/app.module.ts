@@ -6,14 +6,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EqualValidator } from './equal-validator.directive';
 import { HideafterDirective } from './hideafter.directive';
+import { ButtonBusyDirective } from './busy-button.directive';
 import { ComplexityValidator } from './password-complexity-validator.directive';
+import { ParentComponent } from './parent.component';
+import { ChildComponent } from './child.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HideafterDirective,
     EqualValidator,
-    ComplexityValidator
+    ComplexityValidator,
+    ButtonBusyDirective,
+    ParentComponent,
+    ChildComponent
   ],
   imports: [
     BrowserModule,

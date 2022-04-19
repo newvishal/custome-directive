@@ -36,3 +36,9 @@
         <button [disabled]="!f.valid">submit</button>
     </form>
 </div>
+
+<button class="btn btn-primary" (click)="toggle()" type="button" [buttonBusy]="buttonBusy" [busyText]="busyText">
+    Submit
+</button>
+
+<app-parent></app-parent>

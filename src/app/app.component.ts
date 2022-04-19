@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './user.interface';
 
+
 interface IPasswordComplexitySetting {
   requireDigit: boolean;
   requireLowercase: boolean;
@@ -43,8 +44,12 @@ class PasswordComplexitySetting implements IPasswordComplexitySetting {
 })
 export class AppComponent implements OnInit{
   title = 'advance-angular';
+  buttonBusy: boolean = false
+  busyText: string = 'loading...'
   passwordComplexitySetting: IPasswordComplexitySetting = new PasswordComplexitySetting();
   public user!: User;
+
+
 
   ngOnInit(): void {
     this.user = {
@@ -56,5 +61,12 @@ export class AppComponent implements OnInit{
 
   save(model: User, isValid: boolean) {
     console.log(model, isValid);
+  }
+
+  toggle() {
+    this.buttonBusy = !this.buttonBusy;
+    setTimeout(() => {
+      this.buttonBusy = !this.buttonBusy;
+    }, 3000);
   }
 }
