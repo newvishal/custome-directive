@@ -10,8 +10,10 @@ import { ButtonBusyDirective } from './busy-button.directive';
 import { ComplexityValidator } from './password-complexity-validator.directive';
 import { ParentComponent } from './parent.component';
 import { ChildComponent } from './child.component';
+import { SessionTimeoutModalComponent } from './comman/session-timeout/session-timeout-modal.component';
 
-
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { SessionTimeoutComponent } from './comman/session-timeout/session-timeout.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,15 @@ import { ChildComponent } from './child.component';
     ComplexityValidator,
     ButtonBusyDirective,
     ParentComponent,
-    ChildComponent
+    ChildComponent,
+    SessionTimeoutModalComponent,
+    SessionTimeoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   exports: [EqualValidator],
   providers: [],
