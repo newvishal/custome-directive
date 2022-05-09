@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpLoader } from './http-loader';
 import { User } from './user.interface';
+import { TranslocoService } from "@ngneat/transloco";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface IPasswordComplexitySetting {
   requireDigit: boolean;
@@ -39,14 +42,30 @@ class PasswordComplexitySetting implements IPasswordComplexitySetting {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit{
   title = 'advance-angular';
+  buttonBusy: boolean = false
+  busyText: string = 'loading...'
   passwordComplexitySetting: IPasswordComplexitySetting = new PasswordComplexitySetting();
   public user!: User;
+  testFormGroup: FormGroup
+
+  constructor(public fb: FormBuilder ,private service: HttpLoader, private translocoService: TranslocoService) {
+    // translocoService.translate('hello')
+  }
 
   ngOnInit(): void {
+   this.testFormGroup = this.fb.group({
+      a: ['', Validators.required],
+      b: ['', Validators.required],
+      c: '',
+      d: '',
+      e: '',
+      f: ''
+    })
+    // console.log(this.translocoService.translate('hello', { value: 'world' }));
     this.user = {
       username: '',
       password: '',
@@ -54,7 +73,18 @@ export class AppComponent implements OnInit{
     };
   }
 
+  handleSubmit() {
+    
+  }
+
   save(model: User, isValid: boolean) {
     console.log(model, isValid);
+  }
+
+  toggle() {
+    this.buttonBusy = !this.buttonBusy;
+    setTimeout(() => {
+      this.buttonBusy = !this.buttonBusy;
+    }, 3000);
   }
 }

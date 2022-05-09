@@ -1,4 +1,4 @@
-<div class="alert bg-blue" *Hideafter="5000 as time;then placeholder;let counter=counter">
+<!-- <div class="alert bg-blue" *Hideafter="5000 as time;then placeholder;let counter=counter">
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. {{time}} dis-appear in {{counter}}</p>
 </div>
 <ng-template #placeholder let-Hideafter="Hideafter" let-myDefault>
@@ -27,7 +27,6 @@
         </div>
         <div>
             <label for="retype">Retype</label>
-            <!-- validateEqual is our custom validator. It should validate the current input value against the password input value. -->
             <input type="text" name="confirmPassword" [ngModel]="user.confirmPassword" #confirmPassword="ngModel" validateEqual="password" required>
             <small [hidden]="confirmPassword.valid || (confirmPassword.pristine && !f.submitted)">
                 Password mismatch
@@ -36,3 +35,82 @@
         <button [disabled]="!f.valid">submit</button>
     </form>
 </div>
+
+<button class="btn btn-primary" (click)="toggle()" type="button" [buttonBusy]="buttonBusy" [busyText]="busyText">
+    Submit
+</button>
+
+<app-parent></app-parent> -->
+
+
+<!-- <app-session-timeout></app-session-timeout> -->
+
+<!-- <session-timeout></session-timeout> -->
+
+<!-- <ng-container *transloco="let t">
+    <p>{{ t('params', { value: 'vishal' }) }}</p>
+</ng-container> -->
+
+
+<form [formGroup]="testFormGroup" (onsubmit)="handleSubmit()">
+    <div>
+        <span>First name</span>
+        <input type="text" class="form-control" formControlName="a">
+    </div>
+    <div>
+        <span>First name</span>
+        <input type="text" class="form-control" formControlName="b">
+    </div>
+    <div>
+        <span>First name</span>
+        <input type="text" class="form-control" formControlName="c">
+    </div>
+    <div>
+        <span>First name</span>
+        <input type="text" class="form-control" formControlName="d">
+    </div>
+    <div>
+        <span>First name</span>
+        <input type="text" class="form-control" formControlName="e">
+    </div>
+    <div>
+        <span>First name</span>
+        <input type="text" class="form-control" formControlName="f">
+    </div>
+    <div>
+        <span>First name</span>
+        <input type="text" class="form-control">
+    </div>
+    <div>
+        <span>First name</span>
+        <input type="text" class="form-control">
+    </div>
+    <div>
+        <span>First name</span>
+        <input type="text" class="form-control">
+    </div>
+    <div>
+        <span>First name</span>
+        <input type="text" class="form-control">
+    </div>
+    <div>
+        <span>First name</span>
+        <input type="text" class="form-control">
+    </div><div>
+        <span>First name</span>
+        <input type="text" class="form-control">
+    </div>
+    <div>
+        <span>First name</span>
+        <input type="text" class="form-control">
+    </div>
+    <div>
+        <span>First name</span>
+        <input type="text" class="form-control">
+    </div><div>
+        <span>First name</span>
+        <input type="text" class="form-control">
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
